@@ -44,6 +44,10 @@ Deploying ArgoCD on AWS EKS cluster using Terraform.
 - to expose the ArgoCD service to access the web UI: `kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'`
 - to obtain the external IP: `kubectl get svc argocd-server -n argocd -w`. now use that external IP to access the ArgoCD UI.
 
-<h6> Accessing the  </h6>
+<h6> Get the ArgoCD initial admin password: </h6>
+
+- for Linux: `kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d`
+- for Windows Powershell: `[Text.Encoding]::Utf8.GetString([Convert]::FromBase64String((kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}")))`
+  
 
 
