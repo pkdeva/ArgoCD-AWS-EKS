@@ -1,5 +1,5 @@
-resource "aws_iam_role" "RedCarpetUp" {
-  name = "eks-cluster-RedCarpetUp"
+resource "aws_iam_role" "pkdeva" {
+  name = "eks-cluster-pkdeva"
     
   assume_role_policy = <<POLICY
 {
@@ -17,12 +17,12 @@ resource "aws_iam_role" "RedCarpetUp" {
 POLICY
 }
 
-resource "aws_iam_role_policy_attachment" "RedCarpetUp-AmazonEKSClusterPolicy" {
+resource "aws_iam_role_policy_attachment" "pkdeva-AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.RedCarpetUp.name
+  role       = aws_iam_role.pkdeva.name
 }
 
-resource "aws_iam_role" "RCU-nodes" {
+resource "aws_iam_role" "pkdeva-nodes" {
   name = "eks-node-group-nodes"
 
   assume_role_policy = jsonencode({
@@ -37,17 +37,17 @@ resource "aws_iam_role" "RCU-nodes" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "RCU-nodes-AmazonEKSWorkerNodePolicy" {
+resource "aws_iam_role_policy_attachment" "pkdeva-nodes-AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.RCU-nodes.name
+  role       = aws_iam_role.pkdeva-nodes.name
 }
 
-resource "aws_iam_role_policy_attachment" "RCU-nodes-AmazonEKS_CNI_Policy" {
+resource "aws_iam_role_policy_attachment" "pkdeva-nodes-AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role       = aws_iam_role.RCU-nodes.name
+  role       = aws_iam_role.pkdeva-nodes.name
 }
 
-resource "aws_iam_role_policy_attachment" "RCU-nodes-AmazonEC2ContainerRegistryReadOnly" {
+resource "aws_iam_role_policy_attachment" "pkdeva-nodes-AmazonEC2ContainerRegistryReadOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role       = aws_iam_role.RCU-nodes.name
+  role       = aws_iam_role.pkdeva-nodes.name
 }
