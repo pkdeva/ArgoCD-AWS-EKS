@@ -41,7 +41,6 @@ Deploying ArgoCD on AWS EKS cluster using Terraform.
 - check and list all resources with `kubectl get all -n argocd`
 - install ArgoCD: `helm repo add argo https://argoproj.github.io/argo-helm` 
 - `helm install argocd argo/argo-cd -n argocd`
-- `kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml`
 - to expose the ArgoCD service to access the web UI: `kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'`
 - to obtain the external IP: `kubectl get svc argocd-server -n argocd -w`. now use that external IP to access the ArgoCD UI.
 
