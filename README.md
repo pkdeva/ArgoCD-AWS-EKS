@@ -14,12 +14,23 @@ Deploying ArgoCD on AWS EKS cluster using Terraform.
 - `RTB.tf` :  here in this module, we have routing table for our VPC with it's association between route table, subnet and the internet gateway. 
 - `variables.tf` : here we've some variables stored which we gonna map in different module.
 - `VPC.tf` : here we've VPC creating for ArgoCD and Internet Gateway.
-- `provider.tf` : here we've nothing but just declaring our region and provider, "AWS" to let terraform interact with the available resources of AWS.
+- `provider.tf` : here we've nothing but just declaring our region and provider, "AWS" to let Terraform interact with the available resources of AWS.
 
 
+
+-----------------------------------------
 <h2> Requisites: </h2>
 
 - [terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli#install-terraform)
 - [awscli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#before-you-begin)
 - [helm](https://helm.sh/docs/intro/install/)
+
+
+-----------------------------------------
+<h2> Setup: </h2> 
+
+- clone this repo into your machine and initiate the Terraform using `terraform init`
+- authenticate into your aws console using `aws configure`
+- apply the terraform modules using `terraform apply`. it will show the preview of resources which are gonna create.
+- 
