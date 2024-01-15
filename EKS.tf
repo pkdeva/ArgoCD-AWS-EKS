@@ -1,6 +1,6 @@
-resource "aws_eks_cluster" "RedCarpetUp" {
+resource "aws_eks_cluster" "pkdeva" {
   name     = var.eks_cluster_name
-  role_arn = aws_iam_role.RedCarpetUp.arn
+  role_arn = aws_iam_role.pkdeva.arn
   vpc_config {
     subnet_ids = [
       aws_subnet.pvt-sub-1.id,
@@ -12,14 +12,14 @@ resource "aws_eks_cluster" "RedCarpetUp" {
     endpoint_public_access = true
   }
 
-  depends_on = [aws_iam_role_policy_attachment.RedCarpetUp-AmazonEKSClusterPolicy]
+  depends_on = [aws_iam_role_policy_attachment.pkdeva-AmazonEKSClusterPolicy]
 }
 
 
 resource "aws_eks_node_group" "private-nodes" {
-  cluster_name    = aws_eks_cluster.RedCarpetUp.name
+  cluster_name    = aws_eks_cluster.pkdeva.name
   node_group_name = "private-nodes"
-  node_role_arn   = aws_iam_role.RCU-nodes.arn
+  node_role_arn   = aws_iam_role.pkdeva-nodes.arn
   
 
   subnet_ids = [
@@ -47,16 +47,16 @@ resource "aws_eks_node_group" "private-nodes" {
 
 
   depends_on = [
-    aws_iam_role_policy_attachment.RCU-nodes-AmazonEKSWorkerNodePolicy,
-    aws_iam_role_policy_attachment.RCU-nodes-AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.RCU-nodes-AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role_policy_attachment.pkdeva-nodes-AmazonEKSWorkerNodePolicy,
+    aws_iam_role_policy_attachment.pkdeva-nodes-AmazonEKS_CNI_Policy,
+    aws_iam_role_policy_attachment.pkdeva-nodes-AmazonEC2ContainerRegistryReadOnly,
   ]
 }
 
 
 ### security group stuff: 
 
-resource "aws_security_group" "eks_nodes_RCU" {
+resource "aws_security_group" "eks_nodes_pkdeva" {
   vpc_id = module.vpc.vpc_id
 
   egress {
