@@ -16,7 +16,8 @@ Deploying ArgoCD on AWS EKS cluster using Terraform.
 - `VPC.tf` : here we've VPC creating for ArgoCD and Internet Gateway.
 - `provider.tf` : here we've nothing but just declaring our region and provider, "AWS" to let Terraform interact with the available resources of AWS.
 
-
+<h5> Architecture Diagram of our AWS infra: </h5>
+![ArgoCD-AWS-EKS-Deployment-Architecture-Image](https://github.com/pkdeva/ArgoCD-AWS-EKS/assets/83779939/ed3b6104-17a7-46c4-b876-3979ff9071c5)
 
 -----------------------------------------
 <h2> Requisites: </h2>
