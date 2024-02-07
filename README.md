@@ -36,7 +36,7 @@ Deploying ArgoCD on AWS EKS cluster using Terraform.
 - clone this repo into your machine and initiate the Terraform using `terraform init`
 - authenticate into your aws console using `aws configure`
 - apply the terraform modules using `terraform apply`. it will show the preview of resources which are gonna create. confirm to create.
-- 
+  
 <h4> Installing and configuring ArgoCD: </h4>
 
 - run `kubectl create namespace argocd` to isolate resources within our cluster.
